@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>task_8</title>
+    <meta charset="utf-8">
+    <link href="~/css/site.css" rel="stylesheet" type="text/css">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+</head>
+<body>
+
+    <header class="layout-center">
+        <a href="/Home/Index"><img class="head logo" src="\images\logo2.png" alt="logo" width="120px" height="120px" /></a>
+        <h1 class="head">Списки студентов</h1>
+    </header>
+    <hr>
+    <main class="layout-center">
+        @RenderBody()
+    </main>
+    @RenderSection("JavaScript", false)
+
+</body>
+</html>

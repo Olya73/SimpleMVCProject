@@ -1,0 +1,33 @@
+﻿
+@model StudentsWebApp.Models.Student;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="POST" class="elem-center" action="/Home/Edit">
+    <input type="hidden" name="StudentID" value="@Model.StudentID" />
+
+    <label for="student-sur">Введите фамилию:</label>
+    <input id="student-sur" placeholder="Иванов" name="Surname" value="@Model.Surname" />
+    <span asp-validation-for="Surname" /></br>
+
+    <label for="student-name">Введите имя:</label>
+    <input id="student-name" placeholder="Иван" name="Name" value="@Model.Name" required /></br>
+
+    <label for="student-mid">Введите отчество:</label>
+    <input id="student-mid" placeholder="Иванович" name="Midlename" value="@Model.Midlename" /></br>
+
+    <label>Группа: </label>
+
+    <select name="GroupID">
+        @foreach (var g in (List<StudentsWebApp.Models.Group>)ViewBag.Groups)
+        {
+            <option selected="@(g.GroupID == Model.GroupID)" value="@g.GroupID">@g.GroupID - @g.GroupName</option>
+        }
+
+
+    </select><br />
+    <hr />
+    <input type="submit" value="Сохранить" />
+    @Html.ActionLink("Отмена", "Index")
+</form>

@@ -1,0 +1,36 @@
+﻿@model List<StudentsWebApp.Models.Group>;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@foreach (var group in Model)
+{
+    <table class="elem-center">
+        <thead>
+        <th>@group.GroupID - @group.GroupName (@group.Students.Count)</th>
+        <th colspan="2">@Html.ActionLink("Добавить", "Add", new { groupID = group.GroupID })</th>
+        </thead>
+        <tbody>
+            @foreach (var t in group.Students)
+            {
+                <tr>
+                    <td>@t.Fio</td>
+                    <td>@Html.ActionLink("Удалить", "Delete", new { id = t.StudentID })</td>
+                    <td>@Html.ActionLink("Изменить", "Edit", new { id = t.StudentID })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<input type="text" name="name" id="searchLine"/>
+<button id="searchLink">Search</button>
+<button id="AddAsync">AddAsync</button>
+<div id="partialDiv"></div><div id="toAdd"></div>
+@section JavaScript{
+
+<script src="~/js/site.js" asp-append-version="true"></script>
+    
+}
